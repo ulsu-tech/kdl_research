@@ -1,0 +1,55 @@
+import numpy
+import tf.transformations
+from math import pi
+
+help(tf.transformations)
+alpha, beta, gamma = pi/3, pi/6, 0
+I = identity_matrix()
+I = tf.transformations.identity_matrix()
+origin, xaxis, yaxis, zaxis = (0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, 1)
+Ry = tf.transormations.rotation_matrix(alpha, yaxis)
+Ry = tf.transformations.rotation_matrix(alpha, )
+Rz_prime = tf.transformations.rotation_matrix(-beta, zaxis)
+Ry90 = tf.transformations.rotation_matrix(pi/2, yaxis)
+Rz90 = tf.transformations.rotation_matrix(pi/2, zaxis)
+tf.transformations.concatenate_matrices(Ry90, Rz90)
+tf.transformations.concatenate_matrices(Rz90, Ry90)
+tf.transformations.concatenate_matrices(Ry90, Rz90)
+tf.transformations.concatenate_matrices(Ry, Rz_prime)
+rr = tf.transformations.concatenate_matrices(Ry, Rz_prime)
+help(tf.transformations)
+euler_from_matrix(rr, 'rxyz')
+tf.transformations.euler_from_matrix(rr, 'rxyz')
+tf.transformations.euler_from_matrix(rr, 'rzyx')
+tf.transformations.euler_from_matrix(rr, 'rzyx')
+help(numpy.ndarray)
+rr.shape
+rr[:3, :3]
+unity = numpy.array([[1., 0, 0], [0, 1., 0], [0., 0., 1.]])
+unity / rr[:3, :3]
+rr[:3, :3]
+numpy.linalg.inv(rr[:3, :3])
+numpy.linalg.inv(rr[:3, :3]) * numpy.array( [ 1, 0, 0])
+help(numpy)
+numpy.linalg.inv(rr[:3, :3]).dot( numpy.array( [ 1, 0, 0]))
+numpy.linalg.inv(rr[:3, :3])
+rr[:3, :3]
+tf.transformations(pi/2, xaxis)
+tf.transformations.rotation_matrix(pi/2, xaxis)
+tf.transformations.rotation_matrix(pi/2, xaxis)[:3, :3]
+rx90 = tf.transformations.rotation_matrix(pi/2, xaxis)[:3, :3]
+rx90
+rx90.dot(numpy.linalg.inv(rr[:3, :3]))
+tf.transformations.euler_from_matrix(rx90.dot(numpy.linalg.inv(rr[:3, :3])), 'rzyx')
+tf.transformations.euler_from_matrix(numpy.linalg.inv(rr[:3, :3]).dot(rx90), 'rzyx')
+numpy.linalg.inv(rr[:3, :3])
+tf.transformations.euler_from_matrix(numpy.linalg.inv(rr[:3, :3]), 'rzyx')
+rxm90 = tf.transformations.rotation_matrix(-pi/2, xaxis)
+tf.transformations.euler_from_matrix(numpy.linalg.inv(rr[:3, :3]).dot(rx90), 'rzyx')
+tf.transformations.euler_from_matrix(numpy.linalg.inv(rr[:3, :3]).dot(rxm90), 'rzyx')
+rxm90 = tf.transformations.rotation_matrix(-pi/2, xaxis)[:3,:3]
+tf.transformations.euler_from_matrix(numpy.linalg.inv(rr[:3, :3]).dot(rxm90), 'rzyx')
+rzm90 = tf.transformations.rotation_matrix(-pi/2, zaxis)[:3,:3]
+rz90 = tf.transformations.rotation_matrix(pi/2, zaxis)[:3,:3]
+tf.transformations.euler_from_matrix(numpy.linalg.inv(rr[:3, :3]).dot(rz90), 'rzyx')
+

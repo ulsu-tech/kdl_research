@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+<xacro:macro name="example_xacro" params="">
+<xacro:property name="l1_len" value="0.165"/>
+<xacro:property name="l2_len" value="0.23"/>
+<xacro:property name="l3_len" value="0.35"/>
+<xacro:property name="l4_len" value="0.3"/>
+
+
+    <link name="link_001">
+        <visual>
+            <origin xyz="${l1_len/2.} 0 0" rpy="0 ${pi/2} 0" />
+            <geometry >
+                <cylinder radius="0.01" length="${l1_len}"/>
+            </geometry>
+            <material name="link1_color">
+                <color rgba="0.5 1 0.2 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="link_002">
+        <visual>
+            <origin xyz="${l2_len/2 * -5.00000000e-01} ${l2_len/2*8.66025404e-01} ${l2_len/2* 0}" rpy="1.5707963267948966 -1.0471975511965976 0.5235987755982987" />
+            <geometry >
+                <cylinder radius="0.02" length="${l2_len}"/>
+            </geometry>
+            <material name="link2_color">
+                <color rgba="1 0.5 0.2 0.5"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="joint_link001_link002" type = "revolute">
+        <origin xyz = "${l1_len} 0 0" rpy="-0.7137243789447655 0.848062078981481 -0.8570719478501307" />
+        <parent link="link_001"/>
+        <child link="link_002" />
+        <axis xyz="0.4330127 0.25 0.8660254" />
+        <limit lower="-6" upper="6" effort="0" velocity="0" />
+    </joint>
+
+    <link name="link_003">
+        <visual>
+            <origin xyz="0 ${l3_len/2} 0" rpy="${-pi/2} 0 0" />
+            <geometry >
+                <cylinder radius="0.02" length="${l3_len}"/>
+            </geometry>
+            <material name="link3_color">
+                <color rgba="1 0 0.2 0.4"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="link_004">
+        <visual>
+            <origin xyz="${l4_len/2.} 0 0" rpy="0 ${pi/2} 0" />
+            <geometry >
+                <cylinder radius="0.01" length="${l4_len}"/>
+            </geometry>
+            <material name="link4_color">
+                <color rgba="0.9 1 0.9 0.8"/>
+            </material>
+        </visual>
+        <visual>
+            <origin xyz="${l4_len/4.} 0 ${l4_len/3}" rpy="${pi} ${pi/2} 0" />
+            <geometry >
+                <cylinder radius="0.01" length="${l4_len/2}"/>
+            </geometry>
+            <material name="link4_color"/>
+        </visual>
+        <visual>
+            <origin xyz="${l4_len} 0 ${-l4_len/3}" rpy="${pi} ${pi/2} 0" />
+            <geometry >
+                <cylinder radius="0.01" length="${2* l4_len}"/>
+            </geometry>
+            <material name="link4_color"/>
+        </visual>
+    </link>
+
+    <joint name="joint_link002_link003" type = "revolute">
+        <origin xyz = "${l2_len * -5.00000000e-01} ${l2_len*8.66025404e-01} ${l2_len* 0}" rpy="-1.0471975511965976 0 2.0943951023931953" />
+        <parent link="link_002"/>
+        <child link="link_003" />
+        <axis xyz="1 0 0" />
+        <limit lower="-6" upper="6" effort="0" velocity="0" />
+    </joint>
+
+    <joint name="joint_link003_link004" type = "revolute">
+        <origin xyz = " 0 ${l3_len} 0" rpy="0 ${-pi} 0" />
+        <parent link="link_003"/>
+        <child link="link_004" />
+        <axis xyz="0 1 0" />
+        <limit lower="-6" upper="6" effort="0" velocity="0" />
+    </joint>
+
+</xacro:macro>
+</robot>

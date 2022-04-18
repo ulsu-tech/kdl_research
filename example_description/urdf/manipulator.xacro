@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="example" >
+
+  <!-- manipulator as it is -->
+  <xacro:include filename="$(find example_description)/urdf/robot.xacro" />
+
+  <!-- arm -->
+  <xacro:example_xacro />
+
+  <link name="world" />
+
+    <joint name="joint_world_link001"
+            type = "revolute">
+        <origin xyz = "0 0 0" rpy="0 0 0" />
+        <parent link="world"/>
+        <child link="link_001" />
+        <axis xyz="0 1 0" />
+        <limit lower="-6" upper="6" effort="0" velocity="0" />
+    </joint>
+</robot>
+
+
